@@ -1,6 +1,7 @@
 ---
 - name: CFME | Subscribe Using Activation Key | Include Tasks for Installing Custom Facts
-  include_tasks: tasks/install-custom-facts.yml
+  import_role: 
+    name: install_custom_facts
 
 - name: CFME | Subscribe Using Activation Key | Re-register Host With New Satellite 6 Activation Key
   redhat_subscription:

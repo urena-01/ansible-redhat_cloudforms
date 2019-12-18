@@ -5,4 +5,7 @@
   gather_facts: False
   tasks:
     - name: CFME | Install Custom Facts | Include Tasks
-      include_tasks: tasks/custom-facts.yml
+      import_role:
+        name: install_custom_facts
+
+        

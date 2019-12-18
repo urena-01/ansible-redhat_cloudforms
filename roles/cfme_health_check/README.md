@@ -30,8 +30,8 @@ Example Playbook
   gather_facts: True
   tasks:
     - name: CFME | Health Check | Include Tasks
-      import_tasks: tasks/perform-health-check.yml
-
+      import_role:
+        name: install_custom_facts
 ```
 
 License

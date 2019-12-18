@@ -1,5 +1,19 @@
 ---
 - hosts: localhost
-  remote_user: root
-  roles:
-    - install_custom_facts
+  connection: local
+  tasks:
+
+  - import_role:
+      name: install_custom_facts
+
+  - name: verify that the custom facts file exists
+    stat:
+      path: /etc/ansible/facts.d/cfme.fact
+
+  - name: Ensure the value of custom facts
+    debug: msg="{{ ansible_local['cfme'] }}"
+
+  - name: remove local copy of the fact
+    file:
+      path: /etc/ansible/facts.d/cfme.fact
+      state: absent

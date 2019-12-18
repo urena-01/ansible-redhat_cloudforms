@@ -4,4 +4,5 @@
   gather_facts: True
   tasks:
     - name: CFME | Health Check | Include Tasks
-      import_tasks: tasks/perform-health-check.yml
+      import_role:
+        name: cfme_health_check
