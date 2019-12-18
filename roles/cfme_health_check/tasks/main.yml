@@ -1,5 +1,9 @@
 ---
 
+- name: CFME | Health Check | Gather Facts if Ansible FQDN is not defined
+  setup:
+  when: ansible_fqdn is undefined
+
 - name: CFME | Health Check | Port 443 is listening
   wait_for:
     host: "{{ ansible_fqdn }}"
@@ -18,4 +22,3 @@
   until: "cfme_ping_check_result['content'] is defined and cfme_ping_check_result['content'] == 'pong'"
   retries: "{{ cfme_healthcheck_retries | default(100) }}"
   delay: 5
-
